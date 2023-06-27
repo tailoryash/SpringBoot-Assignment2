@@ -1,6 +1,7 @@
 package com.yashtailor.assignment2.controller;
 
 import com.yashtailor.assignment2.entity.*;
+import com.yashtailor.assignment2.exception.*;
 import com.yashtailor.assignment2.service.*;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.http.*;
@@ -29,7 +30,7 @@ public class BookController {
         if (bookById.isPresent()) {
             return ResponseEntity.ok(bookById.get());
         } else {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+           throw new UserNotFoundException();
         }
 //        return bookById.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).build());
     }

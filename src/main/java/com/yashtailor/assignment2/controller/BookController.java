@@ -40,13 +40,13 @@ public class BookController {
         bookService.addBook(book);
     }
 
-    @DeleteMapping("books/delete/{id}")
+    @DeleteMapping("books/{id}")
     public ResponseEntity<String> deleteBook(@PathVariable("id") long id) {
         bookService.deleteBook(id);
         return new ResponseEntity<>("Deleted Id Found", HttpStatus.OK);
     }
 
-    @PutMapping("/books/edit/{id}")
+    @PutMapping("/books/{id}")
     public ResponseEntity<List<Book>> updateBook(@RequestBody Book book, @PathVariable long id) {
         bookService.updateBook(book, id);
 
